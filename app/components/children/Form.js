@@ -37,7 +37,7 @@ var Form = React.createClass({
           <form onSubmit={this.handleSubmit}>
             <div className="form-group">
               <h4 className="">
-                <strong>Location</strong>
+                <strong>Topic</strong>
               </h4>
 
               {/*
@@ -58,7 +58,7 @@ var Form = React.createClass({
                 className="btn btn-primary"
                 type="submit"
               >
-                Submit
+                Search
               </button>
             </div>
           </form>

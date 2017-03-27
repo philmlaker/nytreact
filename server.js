@@ -77,44 +77,49 @@ app.post("/api", function(req, res) {
     });
 });
 
-app.get("/search", function(req, res) {
-    var authKey = "53567ecab3d5401b9ef7333adaad3204";
-    var queryURLBase = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" +
-        authKey + "&q=";
-    https: //api.nytimes.com/svc/search/v2/articlesearch.json?api-key=53567ecab3d5401b9ef7333adaad3204&q="madonna"
-        searchTerm = "madonna";
+// app.get("/search", function(req, res) {
+//     var authKey = "53567ecab3d5401b9ef7333adaad3204";
+//     var queryURLBase = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" +
+//         authKey + "&q=";
+//     var startYear = 0;
+//     var endYear = 0;
+//     searchTerm = "madonna";
 
-    // $("#search-term").val().trim();
-    var queryURL = queryURLBase + searchTerm;
-    request({
-        url: queryURL,
-        method: 'GET',
-        json: true
-    }, function(err, res, body) {
+//     // $("#search-term").val().trim();
+//     var queryURL = queryURLBase + searchTerm;
+//     request({
+//         url: queryURL,
+//         method: 'GET',
+//         json: true
+//     }, function(err, res, body) {
 
-        for (var i = 0; i < 5; i++) {
-            var results = body.response.docs[i].web_url;
-            console.log(results);
-            var exampleLibrary = new History({
-                title: results
-            });
-            exampleLibrary.save(function(error, doc) {
-                // Log any errors
-                if (error) {
-                    console.log(error);
-                }
-                // Or log the doc
-                else {
-                    console.log(doc);
-                }
-            });
+//         for (var i = 0; i < 5; i++) {
+//             var titleResult = body.response.docs[i].headline.main;
+//             var urlResult = body.response.docs[i].web_url;
+//             console.log(titleResult);
+//             console.log(urlResult);
+//             var exampleLibrary = new Article({
+
+//                 title: titleResult,
+//                 url: urlResult,
+//             });
+//             exampleLibrary.save(function(error, doc) {
+//                 // Log any errors
+//                 if (error) {
+//                     console.log(error);
+//                 }
+//                 // Or log the doc
+//                 else {
+//                     console.log(doc);
+//                 }
+//             });
 
 
-        };
+//         };
 
 
-    });
-});
+//     });
+// });
 
 
 

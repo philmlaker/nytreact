@@ -19,16 +19,12 @@ var Main = React.createClass({
   },
 
   // The moment the page renders get the History
-  componentDidMount: function() {
-    // Get the latest history.
-    helpers.getHistory().then(function(response) {
-      console.log(response);
-      if (response !== this.state.history) {
-        console.log("History", response.data);
-        this.setState({ history: response.data });
-      }
-    }.bind(this));
-  },
+  // componentDidMount: function() {
+  //   // Get the latest history.
+  //   helpers.getHistory().then(function(response) {
+  //     console.log(response);
+  //   });
+  // },
 
   // If the component changes (i.e. if a search is entered)...
   componentDidUpdate: function() {
@@ -36,7 +32,9 @@ var Main = React.createClass({
     // Run the query for the address
     helpers.runQuery(this.state.searchTerm).then(function(data) {
       if (data !== this.state.results) {
-        console.log("Address", data);
+     
+        data = JSON.stringify(data);
+           console.log(data);
         this.setState({ results: data });
 
         // After we've received the result... then post the search term to our history.
@@ -66,9 +64,9 @@ var Main = React.createClass({
       <div className="container">
         <div className="row">
           <div className="jumbotron">
-            <h2 className="text-center">Address Finder!</h2>
+            <h2 className="text-center">NYTimes Article Scrapper</h2>
             <p className="text-center">
-              <em>Enter a landmark to search for its exact address (ex: "Eiffel Tower").</em>
+              <em>Enter a topic to search for articles.</em>
             </p>
           </div>
 
