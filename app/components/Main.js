@@ -2,9 +2,9 @@
 var React = require("react");
 
 // Here we include all of the sub-components
-var Form = require("./children/Form");
-var Results = require("./children/Results");
-var History = require("./children/History");
+var Form = require("./children/Form.jsx");
+var Results = require("./children/Results.jsx");
+var History = require("./children/History.jsx");
 
 // Helper for making AJAX requests to our API
 var helpers = require("./utils/helpers");
@@ -31,27 +31,29 @@ var Main = React.createClass({
 
     // Run the query for the address
     helpers.runQuery(this.state.searchTerm).then(function(data) {
-      if (data !== this.state.results) {
+      
+      console.log(data);
+      // if (data !== this.state.results) {
      
-        data = JSON.stringify(data);
-           console.log(data);
-        this.setState({ results: data });
+      //   data = JSON.stringify(data);
+      //      console.log(data);
+      //   this.setState({ results: data });
 
-        // After we've received the result... then post the search term to our history.
-        helpers.postHistory(this.state.searchTerm).then(function() {
-          console.log("Updated!");
+      //   // After we've received the result... then post the search term to our history.
+      //   helpers.postHistory(this.state.searchTerm).then(function() {
+      //     console.log("Updated!");
 
-          // After we've done the post... then get the updated history
-          helpers.getHistory().then(function(response) {
-            console.log("Current History", response.data);
+      //     // After we've done the post... then get the updated history
+      //     helpers.getHistory().then(function(response) {
+      //       console.log("Current History", response.data);
 
-            console.log("History", response.data);
+      //       console.log("History", response.data);
 
-            this.setState({ history: response.data });
+      //       this.setState({ history: response.data });
 
-          }.bind(this));
-        }.bind(this));
-      }
+      //     }.bind(this));
+      //   }.bind(this));
+      // }
     }.bind(this));
   },
   // This function allows childrens to update the parent.
